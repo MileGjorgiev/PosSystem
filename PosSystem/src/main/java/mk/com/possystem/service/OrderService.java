@@ -14,4 +14,5 @@ public interface OrderService {
     List<Order> getOrdersForCustomer(Long customerId);
     List<Order> getOrdersByEmployee(String employeeId);
     void addCustomerToOrder(Long orderId, Long customerId);
+    void finishOrder(Long orderId);
 }

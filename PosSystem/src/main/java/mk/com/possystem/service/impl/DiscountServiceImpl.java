@@ -89,7 +89,6 @@ public class DiscountServiceImpl implements DiscountService {
 
 
     public void removeAllDiscounts(Discount discount, List<Item> items) {
-
         for (Item item : items) {
             double discAmount = discount.getDiscountAmount()/100.0;
             double finalAmount = item.getPrice()/(1-discAmount);

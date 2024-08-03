@@ -3,12 +3,14 @@ package mk.com.possystem.service.impl;
 import mk.com.possystem.models.Customer;
 import mk.com.possystem.models.Dto.OrderDto;
 import mk.com.possystem.models.Employee;
+import mk.com.possystem.models.ItemInOrder;
 import mk.com.possystem.models.Order;
 import mk.com.possystem.models.exceptions.CustomerNotFoundException;
 import mk.com.possystem.models.exceptions.EmployeeNotFoundException;
 import mk.com.possystem.models.exceptions.OrderNotFoundException;
 import mk.com.possystem.repository.CustomerRepository;
 import mk.com.possystem.repository.EmployeeRepository;
+import mk.com.possystem.repository.ItemRepository;
 import mk.com.possystem.repository.OrderRepository;
 import mk.com.possystem.service.OrderService;
 import org.springframework.stereotype.Service;
@@ -21,12 +23,15 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final CustomerRepository customerRepository;
     private final EmployeeRepository employeeRepository;
+    private final ItemRepository itemRepository;
 
     public OrderServiceImpl(OrderRepository orderRepository, CustomerRepository customerRepository
-                            ,EmployeeRepository employeeRepository) {
+                            ,EmployeeRepository employeeRepository,
+                            ItemRepository itemRepository) {
         this.orderRepository = orderRepository;
         this.customerRepository = customerRepository;
         this.employeeRepository = employeeRepository;
+        this.itemRepository = itemRepository;
     }
 
     @Override
@@ -81,5 +86,25 @@ public class OrderServiceImpl implements OrderService {
         Order order = this.orderRepository.findById(orderId).orElseThrow(() -> new OrderNotFoundException(orderId));
         order.setCustomer(customer);
         this.orderRepository.save(order);
+    }
+
+    @Override
+    public void finishOrder(Long orderId) {
+        Order order = this.orderRepository.findById(orderId).orElseThrow(() -> new OrderNotFoundException(orderId));
+        Customer customer = order.getCustomer();
+
+            for (ItemInOrder item : order.getItemInOrders()){
+                if (customer != null) {
+                customer.setPoints(customer.getPoints() + (item.getQuantity() * 5));
+                }
+                item.getItem().setNumberOfOrders(item.getItem().getNumberOfOrders() + item.getQuantity());
+                this.itemRepository.save(item.getItem());
+                order.setTotalPrice(order.getTotalPrice() + (int)(item.getQuantity() * item.getItem().getPrice()));
+                this.orderRepository.save(order);
+            };
+            if (customer != null) {
+                this.customerRepository.save(customer);
+            }
+
     }
 }

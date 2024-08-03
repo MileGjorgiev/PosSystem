@@ -84,4 +84,15 @@ public class OrderController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @PostMapping("/finnishOrder/{id}")
+    public ResponseEntity<Order> finnishOrder(@PathVariable Long id) {
+        try {
+            this.orderService.finishOrder(id);
+            return ResponseEntity.ok().build();
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }
