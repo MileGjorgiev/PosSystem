@@ -6,6 +6,7 @@ import mk.com.possystem.models.ItemInOrder;
 import java.util.List;
 
 public interface ItemInOrderService {
+    List<ItemInOrder> getItemInOrder();
     ItemInOrder findItemInOrder(Long id);
     ItemInOrder createItemInOrder(ItemInOrderDto itemInOrderDto);
     ItemInOrder updateItemInOrder(Long id,ItemInOrderDto itemInOrderDto);

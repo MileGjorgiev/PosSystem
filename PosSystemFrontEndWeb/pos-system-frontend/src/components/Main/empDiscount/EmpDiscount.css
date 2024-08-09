@@ -1,0 +1,17 @@
+.redButton {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 10%;
+}
+
+.redButton:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+.discForm{
+    display: inline;
+}

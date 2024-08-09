@@ -10,11 +10,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/itemsInOrder")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ItemsInOrderController {
 
     private final ItemInOrderService itemInOrderService;
     public ItemsInOrderController(ItemInOrderService itemInOrderService) {
         this.itemInOrderService = itemInOrderService;
+    }
+    @GetMapping
+    public List<ItemInOrder> getItemsInOrder() {
+        return this.itemInOrderService.getItemInOrder();
     }
 
     @GetMapping("/{id}")

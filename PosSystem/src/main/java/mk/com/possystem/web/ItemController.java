@@ -1,37 +1,73 @@
 package mk.com.possystem.web;
 
+
 import mk.com.possystem.models.Dto.ItemDto;
 import mk.com.possystem.models.Item;
 import mk.com.possystem.models.enumerations.ItemType;
 import mk.com.possystem.models.enumerations.TypeSex;
 import mk.com.possystem.service.ItemService;
+import org.springframework.beans.factory.annotation.Value;
+
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.UUID;
 
 
 @RestController
 @RequestMapping("/api/items")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ItemController {
 
     private final ItemService itemService;
 
-    private final String uploadDir = "src/main/resources/uploads/";
+    @Value("${file.upload-dir}")
+    private String uploadDir;
+
 
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
     }
 
+    @GetMapping("/filterByTypes")
+    public List<Item> filterByTypes(@RequestParam(required = false) ItemType itemType,
+                                    @RequestParam(required = false) TypeSex typeSex) {
+
+        List<Item> items = this.itemService.filterByType(itemType,typeSex);
+        return items;
+    }
+
+
+    @GetMapping("/itemType")
+    public List<ItemType> getItemTypes() {
+        return List.of(ItemType.values());
+    }
+    @GetMapping("/typeSex")
+    public List<TypeSex> getTypeSexs() {
+        return List.of(TypeSex.values());
+    }
+
 
     @PostMapping("/add")
-    public ResponseEntity<String> handleFileUpload(@RequestBody ItemDto itemDto,@RequestParam("file") MultipartFile file) {
-        File uploadDirFile = new File(uploadDir);
+    public ResponseEntity<String> handleFileUpload(
+            @RequestParam("file") MultipartFile file,
+            @RequestParam("name") String name,
+            @RequestParam("description") String description,
+            @RequestParam("quantityInStock") int quantityInStock,
+            @RequestParam("price") Long price,
+            @RequestParam("itemType") ItemType itemType,
+            @RequestParam("typeSex") TypeSex typeSex) {
 
+        File uploadDirFile = new File(uploadDir);
         if (!uploadDirFile.exists()) {
             uploadDirFile.mkdirs();
         }
@@ -39,17 +75,15 @@ public class ItemController {
         String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
         String filePath = uploadDir + File.separator + fileName;
 
-
         try {
             file.transferTo(new File(filePath));
-            this.itemService.createItem(itemDto,filePath);
-            return ResponseEntity.ok("File uploaded successfully: " + filePath);
+            this.itemService.createItem(name, description, quantityInStock, price, itemType, typeSex, fileName);
+            return ResponseEntity.ok("File uploaded successfully: " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
-            return ResponseEntity.status(500).body("Failed to upload file");
+            return ResponseEntity.status(500).body("Failed to upload file: " + e.getMessage());
         }
     }
-
 
 
 
@@ -62,7 +96,7 @@ public class ItemController {
 
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Item> save(@PathVariable Long id,@RequestBody ItemDto itemDto) {
+    public ResponseEntity<Item> edit(@PathVariable Long id,@RequestBody ItemDto itemDto) {
         Item item = this.itemService.updateItem(id,itemDto);
         if (item != null) {
             return ResponseEntity.ok().body(item);
@@ -99,5 +133,11 @@ public class ItemController {
                                        @RequestParam (required = false) String name) {
         return this.itemService.filter(itemType,name,description,typeSex);
     }
+
+    @GetMapping("/filterByName")
+    public List<Item> filterByName(@RequestParam String name) {
+        return this.itemService.getItemsByName(name);
+    }
+
 
 }

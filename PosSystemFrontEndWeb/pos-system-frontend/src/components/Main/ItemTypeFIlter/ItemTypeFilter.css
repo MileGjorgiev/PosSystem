@@ -1,0 +1,9 @@
+.itemTypeFilter{
+    display: flex;
+    margin-left: 30%;
+}
+.filterButton{
+    width: 10%;
+    height: 80%;
+    margin-top: 27px;
+}

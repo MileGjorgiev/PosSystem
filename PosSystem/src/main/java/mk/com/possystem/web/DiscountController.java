@@ -8,9 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/discounts")
+@CrossOrigin(origins = "http://localhost:3000")
 public class DiscountController {
 
     public final DiscountService discountService;
@@ -63,19 +65,20 @@ public class DiscountController {
     }
 
 
-    @PutMapping("/addDiscount/{id}")
-    public ResponseEntity<Discount> addDiscount(@PathVariable Long id, @RequestParam Long itemId){
+    @PostMapping("/addDiscount/{id}")
+    public ResponseEntity<Void> addDiscount(@PathVariable Long id, @RequestBody Map<String, Long> requestBody) {
         try {
+            Long itemId = requestBody.get("itemId");
             this.discountService.addDiscountToItem(id, itemId);
             return ResponseEntity.ok().build();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
     }
-    @PutMapping("/removeDiscount/{id}")
-    public ResponseEntity<Discount> remove(@PathVariable Long id, @RequestParam Long itemId){
+    @PostMapping("/removeDiscount/{id}")
+    public ResponseEntity<Discount> remove(@PathVariable Long id, @RequestBody Map<String, Long> requestBody){
         try {
+            Long itemId = requestBody.get("itemId");
             this.discountService.removeDiscountFromItem(id, itemId);
             return ResponseEntity.ok().build();
         }

@@ -6,6 +6,7 @@ import mk.com.possystem.models.enumerations.TypeSex;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 @Repository
@@ -14,4 +15,5 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     List<Item> findAllByTypeSex(TypeSex typeSex);
     List<Item> findByNameContaining(String name);
     List<Item> findAllByDescriptionContaining(String description);
+    List<Item> findAllByItemTypeAndTypeSex(ItemType itemType, TypeSex typeSex);
 }

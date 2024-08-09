@@ -1,10 +1,14 @@
 package mk.com.possystem.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mk.com.possystem.models.enumerations.ItemType;
 import mk.com.possystem.models.enumerations.TypeSex;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -28,6 +32,10 @@ public class Item {
     private TypeSex typeSex;
 
     private String itemImage;
+
+    @OneToMany
+
+    private List<ItemInOrder> itemInOrders;
 
 
     public Item(String name,String description,

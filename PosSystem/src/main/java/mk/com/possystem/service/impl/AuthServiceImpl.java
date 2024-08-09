@@ -5,6 +5,7 @@ import mk.com.possystem.models.exceptions.InvalidArgumentsException;
 import mk.com.possystem.models.exceptions.InvalidUserCredentialsException;
 import mk.com.possystem.repository.EmployeeRepository;
 import mk.com.possystem.service.AuthService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.List;
 @Service
 public class AuthServiceImpl implements AuthService {
     private final EmployeeRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthServiceImpl(EmployeeRepository userRepository) {
+    public AuthServiceImpl(EmployeeRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -23,8 +26,14 @@ public class AuthServiceImpl implements AuthService {
             throw new InvalidArgumentsException();
         }
 
-        return userRepository.findByUsernameAndPassword(username, password)
+        Employee user = userRepository.findByUsername(username)
                 .orElseThrow(InvalidUserCredentialsException::new);
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new InvalidUserCredentialsException();
+        }
+
+        return user;
     }
 
     @Override

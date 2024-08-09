@@ -55,9 +55,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item createItem(ItemDto itemDto, String image) {
-        Item item = new Item(itemDto.getName(), itemDto.getDescription(), itemDto.getQuantityInStock(),
-                itemDto.getPrice(), itemDto.getItemType(),itemDto.getTypeSex(),image);
+    public Item createItem(String name, String description, int quantityInStock,Long price,ItemType itemType,TypeSex typeSex,String filePath) {
+        Item item = new Item(name,description,quantityInStock,price,itemType,typeSex,filePath);
         this.itemRepository.save(item);
         return item;
     }
@@ -72,6 +71,7 @@ public class ItemServiceImpl implements ItemService {
         item.setItemType(itemDto.getItemType());
         item.setItemImage(itemDto.getItemImage());
         item.setTypeSex(itemDto.getTypeSex());
+        item.setItemImage(itemDto.getItemImage());
         this.itemRepository.save(item);
         return item;
     }
@@ -107,6 +107,25 @@ public class ItemServiceImpl implements ItemService {
 
 
         return new ArrayList<>(items);
+    }
+
+    @Override
+    public List<Item> filterByType(ItemType itemType, TypeSex typeSex) {
+
+
+        if (itemType != null && typeSex != null) {
+            return this.itemRepository.findAllByItemTypeAndTypeSex(itemType,typeSex);
+        }
+        if (itemType != null) {
+           return this.itemRepository.findAllByItemType(itemType);
+        }
+        if (typeSex != null){
+           return this.itemRepository.findAllByTypeSex(typeSex);
+        }
+
+
+
+        return getAllItems();
     }
 
 }

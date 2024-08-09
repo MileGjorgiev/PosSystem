@@ -12,14 +12,13 @@ import mk.com.possystem.models.Order;
 public class ItemInOrderDto {
     private int quantity;
 
-    @ManyToOne
-    private Item item;
 
-    @ManyToOne
-    @JsonBackReference
-    private Order order;
+    private Long item;
 
-    public ItemInOrderDto(int quantity, Item item, Order order) {
+
+    private Long order;
+
+    public ItemInOrderDto(int quantity, Long item, Long order) {
         this.quantity = quantity;
         this.item = item;
         this.order = order;

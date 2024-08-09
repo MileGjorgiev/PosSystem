@@ -15,12 +15,11 @@ import mk.com.possystem.models.Employee;
 @NoArgsConstructor
 public class OrderDto {
 
-    @ManyToOne
-    @JoinColumn(name = "employee_username", referencedColumnName = "username")
-    Employee employee;
+
+    String username;
 
 
-    public OrderDto(Employee employee){
-        this.employee = employee;
+    public OrderDto(String employee){
+        this.username = employee;
     }
 }

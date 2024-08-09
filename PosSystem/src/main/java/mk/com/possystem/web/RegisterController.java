@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/register")
+@CrossOrigin(origins = "http://localhost:3000")
 public class RegisterController {
 
     private final AuthService authService;

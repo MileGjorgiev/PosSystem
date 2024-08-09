@@ -1,5 +1,7 @@
 package mk.com.possystem.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -23,7 +25,7 @@ public class Employee implements UserDetails {
     private String username;
     private String password;
     private String name;
-    private Long employeeDiscount;
+    private int employeeDiscount;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -33,12 +35,12 @@ public class Employee implements UserDetails {
     private boolean isCredentialsNonExpired = true;
     private boolean isEnabled = true;
 
-
     public Employee(String username, String password, String name, Role role) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.role = role;
+        this.employeeDiscount = 30;
     }
 
 

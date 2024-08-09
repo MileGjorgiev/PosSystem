@@ -1,0 +1,79 @@
+
+.order-box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px ;
+    margin-right: 20px;
+    width:400px; /* Adjust the width as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-table;
+}
+
+/* Title of the box */
+.order-box-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* List of items inside the box */
+.order-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Each item in the list */
+.order-item {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Item name */
+.order-item-name {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Item details, e.g., quantity, price */
+.order-item-details {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Button (if needed) */
+.order-box-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+.order-box-button:hover {
+    background-color: #0056b3;
+}
+
+
+#dummyUpdate{
+    color: white;
+}
+
+#deleteItemInOrder{
+    width: 10%;
+}
