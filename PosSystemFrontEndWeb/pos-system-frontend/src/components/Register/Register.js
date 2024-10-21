@@ -27,7 +27,7 @@ const Register = (props) => {
         e.preventDefault();
         PosSystemService.register(formData.username, formData.password, formData.name, formData.role)
             .then(() => {
-                navigate("/login");
+                navigate("/");
             })
             .catch((err) => {
                 setError(err.response?.data?.message || "Username already taken. Please try again.");
@@ -86,7 +86,7 @@ const Register = (props) => {
             </div>
             <button style={{marginTop: "10px"}} id="submit" type="submit">Register</button>
         </form>
-        <Link className="link-login" to={'/login'}>Login</Link>
+        <Link className="btn btn-secondary" to={'/'}>Login</Link>
     </div>
     )
 }

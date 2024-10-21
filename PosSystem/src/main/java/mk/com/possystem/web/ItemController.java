@@ -8,17 +8,13 @@ import mk.com.possystem.models.enumerations.TypeSex;
 import mk.com.possystem.service.ItemService;
 import org.springframework.beans.factory.annotation.Value;
 
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.List;
 import java.util.UUID;
 
@@ -89,7 +85,16 @@ public class ItemController {
 
 
     @GetMapping
-    public List<Item> getItems() {
+    public List<Item> getFormItems() {
+        List<Item> items = this.itemService.getAllItems();
+
+        items.removeIf(item -> item.getQuantityInStock() <= 0);
+
+        return items;
+    }
+
+    @GetMapping("/allItems")
+    public List<Item> getAllItems () {
         return this.itemService.getAllItems();
     }
 

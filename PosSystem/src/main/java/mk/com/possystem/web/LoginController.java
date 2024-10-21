@@ -29,7 +29,6 @@ public class LoginController {
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
         try {
             Employee user = authService.login(loginRequest.getUsername(), loginRequest.getPassword());
-            String combinedString = String.format("%s - %s", user.getUsername(), user.getRole());
             return ResponseEntity.ok(user.getUsername());
         } catch (InvalidUserCredentialsException | InvalidArgumentsException exception) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());

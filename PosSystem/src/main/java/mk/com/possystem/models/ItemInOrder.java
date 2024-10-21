@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @NoArgsConstructor
@@ -17,6 +19,7 @@ public class ItemInOrder {
     private int quantity;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private Item item;
 
     @ManyToOne

@@ -3,9 +3,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './addItem.css';
 
-import PosSystemService from '../../../repository/service'
 
-const AddItem = ({ onAddProduct, itemTypesGender, itemType }) => {
+
+const AddItem = ({ onAddProduct, itemTypesGender, itemType,loadAllItems }) => {
     
   const navigate = useNavigate();
   const [formData, updateFormData] = useState({
@@ -49,6 +49,7 @@ const AddItem = ({ onAddProduct, itemTypesGender, itemType }) => {
             },
         });
         console.log('Item added successfully', response.data);
+        loadAllItems();
         navigate('/allItems');
     } catch (error) {
         console.error('Error adding item', error);

@@ -30,7 +30,8 @@ class App extends Component{
       filteredItems: [],
       discounts: [],
       userRole: '',
-      customers: []
+      customers: [],
+      allItems: []
     }
   }
 
@@ -54,26 +55,27 @@ class App extends Component{
       <Router>
         <div>
           
-          {window.location.pathname !== "/login" && window.location.pathname !== "/register" && (
+          {window.location.pathname !== "/" && window.location.pathname !== "/register" && (
             <Header allOrders={this.state.allOrders} deleteOrder={this.deleteOrder}  dummyIncr={this.dummyIncr} allEmployees={this.state.allEmployees} />
           )}
           <main>
             <Routes>
               <Route path={"/register"} element={<Register/>}/>
-              <Route path={"/login"} element={<Login  dummyIncr={this.dummyIncr}/>}/>
+              <Route path={"/"} element={<Login fetch={this.fetch} dummyIncr={this.dummyIncr}/>}/>
               <Route path={"/home"} element={<Main empDiscount={this.empDiscount} deleteItemInOrder={this.deleteItemInOrder} updateFilteredItems={this.updateFilteredItems}
                 filteredItems={this.state.filteredItems} itemTypes={this.state.itemTypes} itemTypesGender={this.state.itemTypesGender}
                 forceUpdate={this.dummyIncr} itemInOrder={this.state.itemInOrder} filterByType={this.filterByType} filterItemsByName={this.filterItemsByName}
-                finnishOrder={this.finnishOrder} customers={this.state.customers} addCustomerToOrder={this.addCustomerToOrder} addCustomerDiscount={this.addCustomerDiscount}/>} />
+                finnishOrder={this.finnishOrder} fetch={this.fetch}
+                customers={this.state.customers} addCustomerToOrder={this.addCustomerToOrder} addCustomerDiscount={this.addCustomerDiscount}/>} />
               
               {userRole === "ROLE_ADMIN" && (
                 <>
-                  <Route path={"/allItems"} element={<AllItems onDelete={this.deleteItem} onEdit={this.getItem} items={this.state.items} />} />
-                  <Route path={"/addItem"} element={<AddItem itemType={this.state.itemTypes} itemTypesGender={this.state.itemTypesGender} onAddProduct={this.addProduct} />} />
+                  <Route path={"/allItems"} element={<AllItems  onDelete={this.deleteItem} onEdit={this.getItem} items={this.state.allItems} />} />
+                  <Route path={"/addItem"} element={<AddItem loadAllItems={this.loadAllItems} itemType={this.state.itemTypes} itemTypesGender={this.state.itemTypesGender} onAddProduct={this.addProduct} />} />
                   <Route path={"/editItem/:id"} element={<EditProduct onEditProduct={this.editItem} itemType={this.state.itemTypes} selectedItem={this.state.selectedItem} itemTypesGender={this.state.itemTypesGender} />} />
-                  <Route path={"/allOrders"} element={<AllOrders orders={this.state.allOrders} />} />
+                  <Route path={"/allOrders"} element={<AllOrders emp={this.state.allEmployees} orders={this.state.allOrders} filter={this.filterOrdersByEmployee} />} />
                   <Route path={"/allUsers"} element={<AllUsers employees={this.state.allEmployees} />} />
-                  <Route path={'/discounts'} element={<Discounts items={this.state.items} addDiscountToItem={this.addDiscountToItem} removeDiscountToItem={this.removeDiscountToItem} discounts={this.state.discounts} />} />
+                  <Route path={'/discounts'} element={<Discounts fetch={this.fetch} items={this.state.items} addDiscountToItem={this.addDiscountToItem} removeDiscountToItem={this.removeDiscountToItem} discounts={this.state.discounts} />} />
                   <Route path={'/addDiscount'} element={<AddDiscount addDiscount={this.addDiscount} />} />
                   <Route path={'/customers'} element={<Customers customers={this.state.customers} />} />
                   <Route path={'/addCustomer'} element={<AddCustomer addCustomer={this.addCustomer}/>} />
@@ -95,6 +97,19 @@ class App extends Component{
     this.loadEmployees();
     this.loadDiscounts();
     this.loadCustomers();
+    this.loadAllItems();
+  }
+
+  fetch = () => {
+    this.loadItemInOrder();
+    this.loadItems();
+    this.loadItemTypes();
+    this.loadItemTypesGender();
+    this.loadOrders();
+    this.loadEmployees();
+    this.loadDiscounts();
+    this.loadCustomers();
+    this.loadAllItems();
   }
 
   loadEmployees = () => {
@@ -131,6 +146,15 @@ class App extends Component{
       })
   }
 
+  loadAllItems = () => {
+    PosSystemService.getAllItems()
+      .then((data) => {
+        this.setState({
+          allItems: data.data
+        })
+      })
+  }
+
   addProduct = (name, description, quantityInStock, price, itemType, typeSex, itemImage) => {
     PosSystemService.addProduct(name, description, quantityInStock, price, itemType, typeSex, itemImage)
       .then(() => {
@@ -159,14 +183,14 @@ class App extends Component{
   deleteItem = (id) => {
     PosSystemService.deleteItem(id)
       .then(() => {
-        this.loadItems();
+        this.loadAllItems();
       });
   }
 
   editItem = (id, name, description, quantityInStock, price, itemType, typeSex, itemImage) => {
     PosSystemService.editItem(id, name, description, quantityInStock, price, itemType, typeSex, itemImage)
       .then(() => {
-        this.loadItems();
+        this.loadAllItems();
       });
   }
 
@@ -291,6 +315,15 @@ class App extends Component{
     .then((data) => {
       this.setState({
         filteredItems: data.data
+      })
+    })
+  }
+
+  filterOrdersByEmployee = (employeeId) => {
+    PosSystemService.filterOrdersByEmployee(employeeId)
+    .then((data) => {
+      this.setState({
+        allOrders: data.data
       })
     })
   }

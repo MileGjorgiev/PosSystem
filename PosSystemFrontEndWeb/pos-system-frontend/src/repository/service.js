@@ -32,6 +32,9 @@ const PosSystemService = {
     getItems: () => {
         return axios.get('/items')
     },
+    getAllItems: () => {
+        return axios.get('/items/allItems')
+    },
     addItem: (quantity,item,order) => {
         return axios.post("/itemsInOrder/add", {
             "quantity": quantity,
@@ -172,8 +175,16 @@ const PosSystemService = {
             }
             
         })
-    }
+    },
 
+    filterOrdersByEmployee : (employeeId) => {
+        return axios.get('/orders/employeeOrders',{
+            params: {
+                employeeId: employeeId
+            }
+        }
+        );
+    }
     
  
 

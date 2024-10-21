@@ -22,7 +22,6 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
 public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;
@@ -36,7 +35,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000"));
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000","http://localhost:8081","exp://192.168.0.105:8081","http://192.168.0.105:8081"));
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE" ,"OPTIONS"));
         corsConfiguration.setAllowedHeaders(List.of("*"));
         corsConfiguration.setAllowCredentials(true);
@@ -53,7 +52,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests( (requests) -> requests
-                        .requestMatchers("/api/login","/api/register","/api/**","/api/*","/*","/**","/uploads/faa5a2f9-aef0-46ba-9c9d-23dc241dcd1e_M+NSW+PREM+ESSNTL+SUST+TEE.png")
+                        .requestMatchers("/api/login","/api/register","/api/**","/api/*","/*","/**")
                         .permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest()

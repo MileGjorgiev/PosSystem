@@ -81,6 +81,7 @@ class ItemForm extends Component {
         console.log(`Submitting form with q: ${quantity}, i: ${item}, o: ${order}`);
         PosSystemService.addItem(quantity, item, order);
         this.props.forceUpdate();
+        this.props.fetch();
         this.props.navigate('/home');
     }
 

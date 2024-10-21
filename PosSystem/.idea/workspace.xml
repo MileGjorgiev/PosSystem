@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3eb2db7b-57bb-4c34-b756-4e8db452f194" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/jobs/DiscountScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/jobs/DiscountScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/models/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/models/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/models/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/models/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/models/ItemInOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/models/ItemInOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/service/impl/DiscountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/service/impl/DiscountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/web/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/web/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/web/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/web/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/com/possystem/web/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/com/possystem/web/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/AllItems/addItem/addItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/AllItems/addItem/addItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/AllOrders/AllOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/AllOrders/AllOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/App/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Discounts/AddDiscountToItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Discounts/AddDiscountToItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Discounts/Discounts.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Discounts/Discounts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Main/FinnishOrder/FinnishOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Main/FinnishOrder/FinnishOrder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Main/ItemForm/ItemForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Main/ItemForm/ItemForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/components/Register/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/repository/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PosSystemFrontEndWeb/pos-system-frontend/src/repository/service.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2k48EnEUDKtFDk1rLDLj0r12LPq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.PosSystemApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ACCENT/POS System/PosSystem/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="mk.com.possystem.models.exceptions" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ACCENT\POS System\PosSystem\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ACCENT\POS System\PosSystem\src\main\resources\static" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="PosSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="PosSystem" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="mk.com.possystem.PosSystemApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3eb2db7b-57bb-4c34-b756-4e8db452f194" name="Changes" comment="" />
+      <created>1722531381482</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722531381482</updated>
+      <workItem from="1722531382675" duration="6301000" />
+      <workItem from="1722562625965" duration="6080000" />
+      <workItem from="1722570040443" duration="3890000" />
+      <workItem from="1722595251571" duration="4442000" />
+      <workItem from="1722640165129" duration="35000" />
+      <workItem from="1722640210626" duration="6511000" />
+      <workItem from="1722652285987" duration="1240000" />
+      <workItem from="1722694451314" duration="538000" />
+      <workItem from="1722695107433" duration="62000" />
+      <workItem from="1722700020709" duration="577000" />
+      <workItem from="1722700833971" duration="102920000" />
+      <workItem from="1723341101328" duration="16000" />
+      <workItem from="1723593377120" duration="714000" />
+      <workItem from="1723596752333" duration="1892000" />
+      <workItem from="1723742390811" duration="2564000" />
+      <workItem from="1724009250962" duration="2809000" />
+      <workItem from="1724115810996" duration="5455000" />
+      <workItem from="1724238354969" duration="3491000" />
+      <workItem from="1724295458647" duration="1389000" />
+      <workItem from="1724341082905" duration="1449000" />
+      <workItem from="1724347903099" duration="2493000" />
+      <workItem from="1724483775539" duration="1483000" />
+      <workItem from="1724487048567" duration="3056000" />
+      <workItem from="1724495195947" duration="1189000" />
+      <workItem from="1724629591067" duration="6584000" />
+      <workItem from="1724661860077" duration="2810000" />
+      <workItem from="1724933213356" duration="3333000" />
+      <workItem from="1725635413519" duration="40000" />
+      <workItem from="1727351595292" duration="7700000" />
+      <workItem from="1727375954605" duration="2000" />
+      <workItem from="1727375969017" duration="262000" />
+      <workItem from="1727427180450" duration="877000" />
+      <workItem from="1727438786260" duration="2036000" />
+      <workItem from="1727443329234" duration="2000" />
+      <workItem from="1729257318030" duration="292000" />
+      <workItem from="1729547377967" duration="39000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="loginRequest.password" />
+        <watch expression="loginRequest.username" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

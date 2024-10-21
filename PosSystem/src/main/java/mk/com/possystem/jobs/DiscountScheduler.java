@@ -20,10 +20,10 @@ public class DiscountScheduler {
 
     @Scheduled(cron = "0 0 0 * * *")
     public void checkForExpiredDiscounts() {
-        List<Discount> expiredDiscounts = discountService.findExpiredDiscounts(LocalDateTime.now());
-        for (Discount discount : expiredDiscounts) {
-            discountService.removeAllDiscounts(discount,discount.getItems());
-            discountService.deleteDiscount(discount.getId());
+            List<Discount> expiredDiscounts = discountService.findExpiredDiscounts(LocalDateTime.now());
+            for (Discount discount : expiredDiscounts) {
+                discountService.removeAllDiscounts(discount,discount.getItems());
+                discountService.deleteDiscount(discount.getId());
+            }
         }
-    }
 }

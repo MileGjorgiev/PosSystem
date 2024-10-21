@@ -34,7 +34,6 @@ public class Item {
     private String itemImage;
 
     @OneToMany
-
     private List<ItemInOrder> itemInOrders;
 
 

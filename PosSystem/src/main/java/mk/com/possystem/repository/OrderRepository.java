@@ -15,7 +15,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     List<Order> findAllByEmployee(Employee employee);
 
-    Order findTopByEmployeeAndOrderDateBefore(Employee employee, LocalDateTime time);
+
 
 
 

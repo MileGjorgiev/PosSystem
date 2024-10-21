@@ -24,7 +24,7 @@ const FinnishOrder = ({ handleClear, finnishOrder, userOrders, totalPrice, input
             }));
             lastOrderIdRef.current = lastOrder.id;
         }
-        setButtonDisabled(!(inputValue > totalPrice));
+        setButtonDisabled(!(inputValue >= totalPrice && totalPrice > 0));
     }, [lastOrder.id, inputValue, totalPrice]);
 
     const handleChange = (e) => {

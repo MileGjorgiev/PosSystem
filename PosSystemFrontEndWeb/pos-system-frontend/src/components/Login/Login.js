@@ -42,7 +42,7 @@ const Login = (props) => {
         })
         .then(orders => {
             console.log("Orders fetched:", orders);
-            
+            props.fetch();
             navigate("/home");
         })
         .catch(error => {

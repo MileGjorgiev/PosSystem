@@ -81,8 +81,8 @@ public class OrderController {
         return this.orderService.getOrdersForCustomer(customerId);
     }
 
-    @GetMapping("/employeeOrders/{employeeId}")
-    public List<Order> getEmployeeOrders(@PathVariable String employeeId) {
+    @GetMapping("/employeeOrders")
+    public List<Order> getEmployeeOrders(@RequestParam String employeeId) {
         return this.orderService.getOrdersByEmployee(employeeId);
     }
 

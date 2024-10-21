@@ -23,7 +23,7 @@ public class Discount {
     private LocalDateTime validUntil;
     private Long discountAmount;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     List<Item> items;
 
     public Discount(LocalDateTime validUntil,

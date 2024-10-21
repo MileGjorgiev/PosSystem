@@ -3,7 +3,6 @@ import PosSystemService from "../../repository/service";
 import Header from "../Header/Header";
 import Order from "../Order/Order";
 import ItemForm from "./ItemForm/ItemForm";
-import { useReducer } from "react";
 import './Main.css'
 import { useNavigate } from "react-router";
 import ItemTypeFilter from "./ItemTypeFIlter/ItemTypeFilter";
@@ -14,7 +13,9 @@ import FilterItemByName from "./filterItemsByName/FilterItemByName";
 
 
 
-const Main = ({updateFilteredItems,filterItemsByName,addCustomerDiscount,finnishOrder,itemInOrder,forceUpdate,filterByType,addCustomerToOrder,itemTypes,itemTypesGender,filteredItems,deleteItemInOrder,empDiscount,customers }) => {
+const Main = ({ updateFilteredItems,filterItemsByName,addCustomerDiscount,finnishOrder,itemInOrder,
+                forceUpdate,filterByType,addCustomerToOrder,itemTypes,itemTypesGender,
+                filteredItems,deleteItemInOrder,empDiscount,customers,fetch }) => {
     const [orders, setOrders] = useState([]);
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -135,7 +136,7 @@ const Main = ({updateFilteredItems,filterItemsByName,addCustomerDiscount,finnish
             ) : (
                 <Order deleteItemInOrder={deleteItemInOrder} userOrders={userOrders}  itemInOrders={itemsOrders} />
             )}
-            <ItemForm  items={items} navigate={navigate}   forceUpdate={forceUpdate}   userOrders={userOrders} />
+            <ItemForm  items={items} navigate={navigate} fetch={fetch}   forceUpdate={forceUpdate}   userOrders={userOrders} />
             <NumpadInput forceUpdate={forceUpdate} addCustomerDiscount={addCustomerDiscount} addCustomerToOrder={addCustomerToOrder} customers={customers} finnishOrder={finnishOrder} empDiscount={empDiscount} userOrders={userOrders}/>
             <EmpDiscount forceUpdate={forceUpdate} userOrders={userOrders} empDiscount={empDiscount}/>
 

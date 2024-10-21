@@ -32,7 +32,7 @@ const Header = ({ allOrders = [], deleteOrder, allEmployees = [], dummyIncr }) =
     PosSystemService.logout()
       .then(() => {
         sessionStorage.removeItem("JWT");
-        navigate("/login");
+        navigate("/");
       })
       .catch(err => {
         console.log("Something went wrong");

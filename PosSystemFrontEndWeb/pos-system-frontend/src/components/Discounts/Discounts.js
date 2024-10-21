@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import { Link } from "react-router-dom";
 import AddDiscountToItem from "./AddDiscountToItem";
 
-const Discounts = ({ discounts, addDiscountToItem, items, removeDiscountToItem }) => {
+const Discounts = ({ discounts, addDiscountToItem, items, removeDiscountToItem, fetch }) => {
     return (
         <div>
             
@@ -44,7 +44,7 @@ const Discounts = ({ discounts, addDiscountToItem, items, removeDiscountToItem }
                                 )}
                             </th>
                             <th>
-                                <AddDiscountToItem discId={disc.id} items={items} addDiscountToItem={addDiscountToItem} discountItems={disc.items} />
+                                <AddDiscountToItem fetch={fetch} discId={disc.id} items={items} addDiscountToItem={addDiscountToItem} discountItems={disc.items} />
                             </th>
                         </tr>
                     )) : <tr><td colSpan="5">No discounts available</td></tr>}

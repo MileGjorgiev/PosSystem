@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import './Disc.css'
 
-const AddDiscountToItem = ({ addDiscountToItem, items, discId }) => {
+const AddDiscountToItem = ({ addDiscountToItem, items, discId,fetch }) => {
     const [formData, updateFormData] = React.useState({
         id: discId,
         itemId: 0,
@@ -23,6 +23,7 @@ const AddDiscountToItem = ({ addDiscountToItem, items, discId }) => {
         const itemId = formData.itemId;
 
         addDiscountToItem(id, itemId);
+        fetch();
         navigate("/discounts");
     };
 

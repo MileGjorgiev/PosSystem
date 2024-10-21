@@ -28,10 +28,22 @@ public class DiscountServiceImpl implements DiscountService {
     public void addDiscountToItem(Long id, Long itemId) {
         Discount discount = this.discountRepository.findById(id).orElseThrow(() -> new DiscountNotFoundException(id));
         Item item = this.itemRepository.findById(itemId).orElseThrow(() -> new ItemNotFoundException(itemId));
-        discount.getItems().add(item);
+
+        List<Item> discountedItems = discount.getItems();
+
+        for (Item i : discountedItems) {
+            if (i.getId().equals(itemId)) {
+                removeDiscountFromItem(id, itemId);
+                break;
+            }
+        }
+
+
+
         double discAmount = discount.getDiscountAmount() / 100.0;
         double finalAmount = item.getPrice() * discAmount;
         item.setPrice((long) (item.getPrice() - finalAmount));
+        discount.getItems().add(item);
         this.itemRepository.save(item);
         this.discountRepository.save(discount);
     }

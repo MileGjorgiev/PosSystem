@@ -92,6 +92,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> getOrdersByEmployee(String employeeId) {
+        if (employeeId.isEmpty() || employeeId.equals("All")) {
+            return this.orderRepository.findAll();
+        }
+
         Employee employee = this.employeeRepository.findByUsername(employeeId).orElseThrow(() ->
                 new EmployeeNotFoundException(employeeId));
 
@@ -118,6 +122,11 @@ public class OrderServiceImpl implements OrderService {
             }
             item.getItem().setNumberOfOrders(item.getItem().getNumberOfOrders() + item.getQuantity());
             item.getItem().setQuantityInStock(item.getItem().getQuantityInStock() - item.getQuantity());
+
+            if (item.getItem().getQuantityInStock() <= 0) {
+                item.getItem().setQuantityInStock(0);
+            }
+            
             this.itemRepository.save(item.getItem());
         }
         if (customer != null) {
@@ -138,13 +147,10 @@ public class OrderServiceImpl implements OrderService {
         Order order = this.orderRepository.findById(orderFinished.getId()).orElseThrow(() -> new OrderNotFoundException(orderFinished.getId()));
         Employee employee = this.employeeRepository.findByUsername(orderFinished.getUsername()).orElseThrow(() -> new EmployeeNotFoundException(orderFinished.getUsername()));
         double discount = employee.getEmployeeDiscount() / 100.0;
-        // Calculate the discount amount
         double discountAmount = order.getTotalPrice() * discount;
 
-        // Set the new total price after applying the discount
         order.setTotalPrice(order.getTotalPrice() - (int) discountAmount);
 
-        // Save the updated order to the repository
         this.orderRepository.save(order);
         return order;
     }
